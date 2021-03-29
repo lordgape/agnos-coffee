@@ -2,6 +2,8 @@ const express = require('express');
 const mongoose = require("mongoose");
 const Config = require("./config/config.json")
 const app = express();
+const http = require("http").createServer(app);
+const io = require("socket.io")(http);
 
 require('./middlewares')(app);
 
@@ -19,6 +21,18 @@ mongoose.connect(Config.env.mongoConnectionURL,{useNewUrlParser:true,useUnifiedT
 //Set up port
 const PORT = global.process.env.PORT || 5000;
 
-app.listen(PORT, () => {
+
+io.on('connection', () => {
+  console.log('connected to socket');
+});
+
+
+
+http.listen(PORT, () => {
   console.log(`Server is listening to request on  ${PORT}`);
 });
+
+const socketIoObject = io;
+module.exports.ioObject = socketIoObject
+
+

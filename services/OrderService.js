@@ -8,6 +8,7 @@ const OrderValidation = require('../validation/OrderValidation');
 const CastError = require('mongoose').CastError;
 // const OrderLibrary = require("../library/OrderLibrary");
 const { ORDER_STATUS, DISCOUNT_TYPE } = require('../util/constants');
+const socket = require('../index');
 
 const computeDiscount = (discount, total) => {
   let value = 0;
@@ -129,6 +130,10 @@ module.exports = class ProductService {
 
       let order = await Orders.findById(orderId).select('-__v').sort({ date: -1 });
 
+      if (!order) {
+        throw ErrorUtil.getOrderNotFoundError(orderId);
+      }
+
       return new AppResponse(ResponseCode.SUCCESS, { order: order }, []);
     } catch (error) {
       if (error instanceof AppError) {
@@ -156,6 +161,10 @@ module.exports = class ProductService {
 
       let order = await Orders.findById(orderId);
 
+      if (!order) {
+        throw ErrorUtil.getOrderNotFoundError(orderId);
+      }
+
       if (
         order.orderStatus.current === ORDER_STATUS.READY_FOR_SHIPPING ||
         order.orderStatus.current === ORDER_STATUS.IN_PRODUCTION
@@ -164,15 +173,12 @@ module.exports = class ProductService {
       }
 
       order.orderStatus = {
-        current: ORDER_STATUS.IN_PRODUCTION
+        current: ORDER_STATUS.READY_FOR_SHIPPING
       };
 
       order.save();
 
-      setTimeout(() => {
-        // notify.customer(ORDER_STATUS.READY_FOR_SHIPPING);
-        console.log(`I'm notifying customer now`);
-      }, 2000);
+      socket.ioObject.emit('order_ready', { message: 'You order is ready for shipping' });
 
       return new AppResponse(
         ResponseCode.SUCCESS,

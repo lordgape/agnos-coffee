@@ -8,6 +8,7 @@ module.exports = function (app) {
 
   app.use(function (req, res) {
     if (req.url == '/') {
+      // res.sendFile('/home/chesvic/Documents/javascript-projects/agnos-coffee-shop/index.html')
       res.json({ code: 'SUCCESS', response: 'agnos-coffee-shop server is in good health', error: '' });
       return;
     }
