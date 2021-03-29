@@ -1,0 +1,34 @@
+{
+  "name": "agnos-coffee-shop",
+  "version": "1.0.0",
+  "description": "API backend for building a coffee-shop",
+  "main": "index.js",
+  "scripts": {
+    "start": "node .",
+    "dev": "nodemon .",
+    "test": "NODE_ENV=test nyc --reporter=html --reporter=text mocha 'test/**/*.spec.js'"
+  },
+  "author": "Chesvic Hillary",
+  "license": "MIT",
+  "devDependencies": {
+    "chai": "^4.3.4",
+    "eslint": "^7.23.0",
+    "mocha": "^8.3.2",
+    "nodemon": "^2.0.7",
+    "nyc": "^15.1.0"
+  },
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "compression": "^1.7.4",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "express-rate-limit": "^5.2.6",
+    "helmet": "^4.4.1",
+    "joi": "^17.4.0",
+    "mongoose": "^5.12.2",
+    "morgan": "^1.10.0",
+    "response-time": "^2.3.2",
+    "uuid": "^8.3.2",
+    "validator": "^13.5.2"
+  }
+}
