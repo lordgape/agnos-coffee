@@ -1,6 +1,6 @@
 {
   "env": {
-    "mongoConnectionURL": "mongodb+srv://agnos-coffee-admin:admin@cluster0.mjjfr.mongodb.net/agnos?retryWrites=true&w=majority"
+    "mongoConnectionURL": "Dummy_URL"
   },
   "products" : {
     "defaultTax" : 13
