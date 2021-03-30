@@ -3,6 +3,9 @@
 
 [Hatchblog](https://github.com/lordgape/agnos-coffee-shop) API backend for building a coffee-shop
 
+## DB credential
+Change mongoConnectionURL to the one sent via email after running the development script.
+
 ## Installation
 
 ```bash

@@ -4,7 +4,7 @@
   "description": "API backend for building a coffee-shop",
   "main": "index.js",
   "scripts": {
-    "start": "node .",
+    "start": "cp config/dist.config.json config/config.json && node .",
     "dev": "nodemon .",
     "test": "NODE_ENV=test nyc --reporter=html --reporter=text mocha 'test/**/*.spec.js'"
   },
