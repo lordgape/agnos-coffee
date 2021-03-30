@@ -1,0 +1,243 @@
+{
+	"info": {
+		"_postman_id": "6f501fcf-09b6-4b13-b0be-37ab867bc8c8",
+		"name": "Agnos Coffee Shop",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Health",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5000",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000"
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "List Products",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5000/api/products",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"products"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "List orders",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5000/api/orders",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"orders"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get order by id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5000/api/orders/606143463c0a3b556b7fdaff",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"orders",
+						"606143463c0a3b556b7fdaff"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create product",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"/*",
+							"",
+							"{",
+							"    \"name\"  : \"Lenova\",",
+							"    \"costPrice\": \"500\",",
+							"    \"basePrice\": \"700\",",
+							"    \"tax\": 5,",
+							"    \"quantity\" : 2,",
+							"    \"discount\" : {",
+							"        \"label\" : \"Volume\",",
+							"        \"type\":\"Fixed\",",
+							"        \"value\":12",
+							"    }",
+							"}",
+							"",
+							"*/"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\"  : \"Lenova PC\",\n    \"costPrice\": \"500\",\n    \"basePrice\": \"700\",\n    \"quantity\" : 2,\n    \"tax\": 4,\n    \"discount\" : {\n        \"label\" : \"Volume discount\",\n        \"type\" : \"PERCENTAGE\",\n        \"value\" : 19\n    }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/products",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"products"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Order",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"/*",
+							"",
+							"{",
+							"    \"name\"  : \"Lenova\",",
+							"    \"costPrice\": \"500\",",
+							"    \"basePrice\": \"700\",",
+							"    \"tax\": 5,",
+							"    \"quantity\" : 2,",
+							"    \"discount\" : {",
+							"        \"label\" : \"Volume\",",
+							"        \"type\":\"Fixed\",",
+							"        \"value\":12",
+							"    }",
+							"}",
+							"",
+							"*/"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"orderItems\": [{\n\t\t\"productId\": \"60615e2a43933f3c926d0adf\",\n\t\t\"quantity\": 2\n\t}, {\n\t\t\"productId\": \"606157f29758ce27e22fe1cd\",\n\t\t\"quantity\": 1\n\t}],\n\t\"customer\": {\n\t\t\"name\": \"Boss Lordgape\",\n\t\t\"email\": \"lordgape@gmail.com\"\n\t}\n\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/orders",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"orders"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Place Order",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"/*",
+							"",
+							"{",
+							"    \"name\"  : \"Lenova\",",
+							"    \"costPrice\": \"500\",",
+							"    \"basePrice\": \"700\",",
+							"    \"tax\": 5,",
+							"    \"quantity\" : 2,",
+							"    \"discount\" : {",
+							"        \"label\" : \"Volume\",",
+							"        \"type\":\"Fixed\",",
+							"        \"value\":12",
+							"    }",
+							"}",
+							"",
+							"*/"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5000/api/orders/606143463c0a3b556b7fdaff",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"orders",
+						"606143463c0a3b556b7fdaff"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
