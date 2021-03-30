@@ -35,9 +35,7 @@ const newProductPayload = {
 };
 
 describe('ProductService', () => {
-  beforeEach(function () {});
-
-  afterEach(function () {});
+  
 
   it('can create new product', async () => {
     const { name, basePrice, costPrice, tax, quantity, discount } = newProductPayload;

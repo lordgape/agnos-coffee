@@ -6,7 +6,6 @@ const AppError = require('../models/AppError');
 const ErrorUtil = require('../util/ErrorUtil');
 const OrderValidation = require('../validation/OrderValidation');
 const CastError = require('mongoose').CastError;
-const OrderLibrary = require("../library/OrderLibrary");
 const { ORDER_STATUS, DISCOUNT_TYPE } = require('../util/constants');
 const socket = require('../index');
 

@@ -20,7 +20,6 @@ module.exports = {
   },
 
   listProductSortedByDate: async () => {
-    console.log('I got here');
     return Products.find();
   }
 
