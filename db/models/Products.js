@@ -17,11 +17,6 @@ const ProductSchema = new Schema({
     required: true,
     description: 'Product unique reference code'
   },
-  subtitle: {
-    type: 'string',
-    maxLength: 255,
-    description: 'Optional subtitle intended to be used for SEO or layout purposes'
-  },
   price: {
     type: 'number',
     minimum: 0,

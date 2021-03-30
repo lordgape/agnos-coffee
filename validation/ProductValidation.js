@@ -25,17 +25,17 @@ module.exports = class ProductValidation {
       errors.costPrice = 'costPrice parameter is required';
     }
 
-    if(!Validator.isNumeric(costPrice.toString() || "0")) {
+    if(!DevToolkit.isEmpty(costPrice) && !Validator.isNumeric(costPrice.toString() || "0")) {
       errors.costPrice = 'costPrice must be a valid digit';
     }
    
     // Validate tax
-    if(!Validator.isNumeric(tax.toString() || "0")) {
+    if(!DevToolkit.isEmpty(tax) && !Validator.isNumeric(tax.toString()  || "0")) {
       errors.tax = 'tax must be a valid digit';
     }
     
     // Validate quantity
-    if(!Validator.isNumeric(quantity.toString() || "0")) {
+    if(!DevToolkit.isEmpty(quantity) && !Validator.isNumeric(quantity.toString() || "0")) {
       errors.quantity = 'quantity must be a valid digit';
     }
     

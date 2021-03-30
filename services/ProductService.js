@@ -1,10 +1,10 @@
-const UUID = require('uuid');
-const Products = require('../models/Products');
+const Products = require('../db/models/Products');
 const AppResponse = require('../models/AppResponse');
 const ResponseCode = require('../models/ResponseCode');
 const AppError = require('../models/AppError');
 const ErrorUtil = require('../util/ErrorUtil');
 const ProductValidation = require('../validation/ProductValidation');
+const ProductLibrary = require('../library/ProductLibrary');
 module.exports = class ProductService {
   /**
    *
@@ -27,22 +27,9 @@ module.exports = class ProductService {
         throw ErrorUtil.generateValidationError(errors);
       }
 
-      const newProduct = new Products({
-        name: name,
-        sku: UUID.v4(),
-        basePrice: basePrice,
-        costPrice: costPrice,
-        tax: tax,
-        quantity: quantity || 1
-      });
+      const newProduct = await ProductLibrary.createNewProduct(name, basePrice, costPrice, tax, quantity, discount);
 
-      if (discount) {
-        newProduct.discount = discount;
-      }
-
-      const savedProduct = await newProduct.save();
-
-      return new AppResponse(ResponseCode.SUCCESS, { product: savedProduct }, []);
+      return new AppResponse(ResponseCode.SUCCESS, { product: newProduct }, []);
     } catch (error) {
       if (error instanceof AppError) {
         throw error;
@@ -58,7 +45,7 @@ module.exports = class ProductService {
    */
   static async getAllProducts() {
     try {
-      const allProduct = await Products.find().select('-__v').sort({ date: -1 });
+      const allProduct = await ProductLibrary.listProductSortedByDate();
 
       return new AppResponse(ResponseCode.SUCCESS, { products: allProduct }, []);
     } catch (error) {
